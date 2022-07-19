@@ -3,10 +3,13 @@
 
 #include <iostream>
 
+#include "test.cuh"
+
 #include <controls.hpp>
 #include <shaders.hpp>
 #include <objloader.hpp>
 #include <rendering.hpp>
+
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -24,7 +27,7 @@ int main() {
     // ------------------------------
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
@@ -63,50 +66,54 @@ int main() {
 	glGenVertexArrays(1, &vertexArrayID);
 	glBindVertexArray(vertexArrayID);
 
-    // Read our .obj file
-    std::vector< glm::vec3 > vertices;
-    std::vector< glm::vec2 > uvs;
-    std::vector< glm::vec3 > normals;
-    bool res = loadObject("../models/cube.obj", vertices, uvs, normals);
-
-    GLuint vertexBuffer;
-	glGenBuffers(1, &vertexBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
-
-	GLuint uvBuffer;
-	glGenBuffers(1, &uvBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, uvBuffer);
-	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+    //Read our .obj file
+    Object object;
+    object.filePath = "../models/cube.obj";
+    object.loadObject();
+    
+    std::vector< glm::vec3 > vertices = object.outVertices;
+    std::vector< glm::vec2 > uvs = object.outUvs;
 
     // Create and compile our GLSL program from the shaders
-    GLuint programID = LoadShaders( "../shaders/vertex.vert", "../shaders/fragment.frag" );
+    Shaders shaders;
+    shaders.vertex_file_path = "../shaders/vertex.vert";
+    shaders.fragment_file_path = "../shaders/fragment.frag";
+
+    GLuint programID = shaders.loadShaders();
+
     glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 
     int major, minor;
     glGetIntegerv(GL_MAJOR_VERSION, &major);
     glGetIntegerv(GL_MINOR_VERSION, &minor);
 
-    std::cout << major << "." << minor << std::endl;
+    std::cout << "OpenGL version: " << major << "." << minor << std::endl;
+
+    Greetings greetings;
+    greetings.hello(3);
+
+    Camera camera; 
+    Renderer renderer;
+    renderer.createBuffers(vertices, uvs);
 
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
-
-        computeMatricesFromInputs(window, 3.14f, 0.0f, 45.0f, 0.01f, 0.005f);
-        glm::mat4 projection = getProjectionMatrix();
-        glm::mat4 view = getViewMatrix();
-        glm::mat4 model = glm::mat4(1.0f);
-        mvp = projection * view * model;
+        
+        camera.updateCamera(window);
+        mvp = camera.getMvp();
+        
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glUseProgram(programID);
         glUniformMatrix4fv(matrixID, 1, GL_FALSE, &mvp[0][0]);
 
-        draw(vertexBuffer, uvBuffer, vertices);
+    
+        renderer.draw(vertices); // Draw the triangle !
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -115,8 +122,7 @@ int main() {
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
     // Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexBuffer);
-	glDeleteBuffers(1, &uvBuffer);
+    renderer.deleteBuffers();
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &vertexArrayID);
 

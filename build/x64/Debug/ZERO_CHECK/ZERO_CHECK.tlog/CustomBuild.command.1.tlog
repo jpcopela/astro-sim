@@ -1,0 +1,10 @@
+^C:\USERS\COPEL\PROJECTS\ASTRO-SIM\BUILD\CMAKEFILES\858074B7092597B244FB136BFA653554\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/copel/Projects/astro-sim -BC:/Users/copel/Projects/astro-sim/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/copel/Projects/astro-sim/build/astro.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

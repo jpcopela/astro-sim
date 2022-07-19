@@ -1,0 +1,3 @@
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/ZERO_CHECK.dir

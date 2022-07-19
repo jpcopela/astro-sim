@@ -1,0 +1,52 @@
+^C:\USERS\COPEL\PROJECTS\ASTRO-SIM\BUILD\CMAKEFILES\63BA30D2507600B931A7758B18A0FA3E\ASTRO_GENERATED_TEST.CU.OBJ.RULE
+setlocal
+cd C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=ON -D "CCBIN:PATH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools/MSVC/14.29.30133/bin/Hostx64/x64" -D build_configuration:STRING=Debug -D generated_file:STRING=C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/Debug/astro_generated_test.cu.obj -D generated_cubin_file:STRING=C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/Debug/astro_generated_test.cu.obj.cubin.txt -P C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.obj.Debug.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\COPEL\PROJECTS\ASTRO-SIM\SRC\TEST.CU
+setlocal
+cd C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/copel/Projects/astro-sim/build
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=ON -D "CCBIN:PATH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools/MSVC/14.29.30133/bin/Hostx64/x64" -D build_configuration:STRING=Debug -D generated_file:STRING=C:/Users/copel/Projects/astro-sim/build/astro_generated_test.cu.ptx -D generated_cubin_file:STRING=C:/Users/copel/Projects/astro-sim/build/astro_generated_test.cu.ptx.cubin.txt -P C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.ptx.Debug.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\COPEL\PROJECTS\ASTRO-SIM\BUILD\CMAKEFILES\AB5A74D10C88DE9BDA601F5E93C9A604\ASTRO_INTERMEDIATE_LINK.OBJ.RULE
+setlocal
+"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe" --std=c++11 -m64 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools/MSVC/14.29.30133/bin/Hostx64/x64" -dlink C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/Debug/astro_generated_test.cu.obj -o C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/Debug/astro_intermediate_link.obj -Xcompiler /MDd
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\COPEL\PROJECTS\ASTRO-SIM\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/copel/Projects/astro-sim -BC:/Users/copel/Projects/astro-sim/build --check-stamp-file C:/Users/copel/Projects/astro-sim/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

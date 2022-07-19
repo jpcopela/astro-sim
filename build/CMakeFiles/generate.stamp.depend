@@ -1,0 +1,37 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCUDAInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Compiler/NVIDIA-CUDA.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindCUDA.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindCUDA/run_nvcc.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindCUDA/select_compute_arch.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/Windows-NVIDIA-CUDA.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake
+C:/Users/copel/Projects/astro-sim/CMakeLists.txt
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CMakeCCompiler.cmake
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CMakeCUDACompiler.cmake
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CMakeCXXCompiler.cmake
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CMakeRCCompiler.cmake
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CMakeSystem.cmake
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.obj.cmake.pre-gen
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.obj.depend
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.ptx.cmake.pre-gen
+C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.ptx.depend

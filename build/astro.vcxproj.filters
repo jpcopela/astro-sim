@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\controls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\objloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\rendering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\shaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\63ba30d2507600b931a7758b18a0fa3e\astro_generated_test.cu.obj.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\test.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\ab5a74d10c88de9bda601f5e93c9a604\astro_intermediate_link.obj.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\copel\Projects\astro-sim\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\copel\Projects\astro-sim\build\astro_generated_test.cu.ptx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\src\$(Configuration)\astro_generated_test.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+    <Object Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\$(Configuration)\astro_intermediate_link.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6C591288-CF93-378A-9491-1D2D45D7FCBE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{B3879BDF-5747-34B2-85C8-E5F93198C430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A5A40B37-C3AF-3BB7-9177-D61B61979E41}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
