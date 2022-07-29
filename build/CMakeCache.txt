@@ -92,7 +92,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files/astro
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/astro
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/link.exe
@@ -439,7 +439,7 @@ CMAKE_GENERATOR:INTERNAL=Visual Studio 16 2019
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2019/Community
 //Name of generator platform.
-CMAKE_GENERATOR_PLATFORM:INTERNAL=x64
+CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
@@ -510,7 +510,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
 //List of intermediate files that are part of the cuda dependency
 // scanning.
-CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.ptx.depend;C:/Users/copel/Projects/astro-sim/build/CMakeFiles/cuda_compile_1.dir/src/cuda_compile_1_generated_test.cu.obj.depend;C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_test.cu.obj.depend
+CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_nbody.cu.ptx.depend;C:/Users/copel/Projects/astro-sim/build/CMakeFiles/astro.dir/src/astro_generated_nbody.cu.obj.depend
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_BUILD_CUBIN

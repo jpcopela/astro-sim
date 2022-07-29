@@ -18,24 +18,14 @@ file(GLOB_RECURSE SOURCES_CUDA "${PROJECT_SRC_DIR}/*.cu")
 #### Header Files ####
 
 # -- CUDA --
-include_directories("${CUDA_INCLUDE_DIRS}")
+include_directories(${CUDA_INCLUDE_DIRS})
 
 # -- Project Includes --
 include_directories("${PROJECT_INCLUDE_DIRS}")
 cuda_include_directories("${PROJECT_INCLUDE_DIRS}")
 
 #### External Libraries ####
-    
 set( GLFW_SHARED_LIB "${PROJECT_LIBS_DIR}/glfw3.lib")
-
-set( CUDA_LIBS 
-    ${CUDA_LIBRARIES}
-    ${CUDA_CUDA_LIBRARY}
-    ${CUDA_curand_LIBRARY})
-
-set( OPENGL_LIBS 
-    ${OPENGL_LIBRARY}
-    ${GLFW_STATIC_LIB})
 
 # Compilation Flags
 set(COMPILE_FLAGS "")
@@ -69,4 +59,4 @@ CUDA_WRAP_SRCS(astro PTX CUDA_PTX_FILES ${SOURCES_CUDA} OPTIONS ${cuda_additiona
 
 cuda_add_executable(astro ${SOURCES} ${SOURCES_CUDA} ${CUDA_PTX_FILES} OPTIONS ${cuda_additional_flags})
 
-target_link_libraries(astro ${GLFW_SHARED_LIB} ${CUDA_LIBS})
+target_link_libraries(astro ${GLFW_SHARED_LIB}  ${CUDA_LIBRARIES} ${CUDA_CUDA_LIBRARY} ${CUDA_curand_LIBRARY})

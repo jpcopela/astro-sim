@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\controls.cpp">
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\obj_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\objloader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\rendering.cpp">
+    <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\particle_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\copel\Projects\astro-sim\src\shaders.cpp">
@@ -21,10 +24,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\63ba30d2507600b931a7758b18a0fa3e\astro_generated_test.cu.obj.rule">
+    <CustomBuild Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\63ba30d2507600b931a7758b18a0fa3e\astro_generated_nbody.cu.obj.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\src\test.cu">
+    <CustomBuild Include="..\src\nbody.cu">
       <Filter>Source Files</Filter>
     </CustomBuild>
     <CustomBuild Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\ab5a74d10c88de9bda601f5e93c9a604\astro_intermediate_link.obj.rule">
@@ -33,10 +36,10 @@
     <CustomBuild Include="C:\Users\copel\Projects\astro-sim\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\copel\Projects\astro-sim\build\astro_generated_test.cu.ptx" />
+    <None Include="C:\Users\copel\Projects\astro-sim\build\astro_generated_nbody.cu.ptx" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\src\$(Configuration)\astro_generated_test.cu.obj">
+    <Object Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\src\$(Configuration)\astro_generated_nbody.cu.obj">
       <Filter>Object Files</Filter>
     </Object>
     <Object Include="C:\Users\copel\Projects\astro-sim\build\CMakeFiles\astro.dir\$(Configuration)\astro_intermediate_link.obj">

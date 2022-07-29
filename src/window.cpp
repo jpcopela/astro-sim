@@ -3,12 +3,13 @@
 
 #include <iostream>
 
-#include "test.cuh"
+#include "nbody.cuh"
 
-#include <controls.hpp>
+#include <camera.hpp>
 #include <shaders.hpp>
 #include <objloader.hpp>
-#include <rendering.hpp>
+#include <obj_renderer.hpp>
+#include <particle_renderer.hpp>
 
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -17,26 +18,20 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
 //variables
-const unsigned int width = 1920;
-const unsigned int height = 1080;
+const unsigned int width = 800;
+const unsigned int height = 600;
+
 GLuint matrixID;
 glm::mat4 mvp;
 
 int main() {
-    // glfw: initialize and configure
-    // ------------------------------
+    setDevice();
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
-
-    // glfw window creation
-    // --------------------
     GLFWwindow* window = glfwCreateWindow(width, height, "astro-sim", NULL, NULL);
     if (window == NULL)
     {
@@ -48,100 +43,72 @@ int main() {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     // glad: load all OpenGL function pointers
-    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }    
 
-
     // Enable depth test
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_CULL_FACE);
     // Accept fragment if it closer to the camera than the former one
-    glDepthFunc(GL_LESS);
+    //glDepthFunc(GL_LESS);
 
-    GLuint vertexArrayID;
-	glGenVertexArrays(1, &vertexArrayID);
-	glBindVertexArray(vertexArrayID);
-
-    //Read our .obj file
-    Object object;
-    object.filePath = "../models/cube.obj";
-    object.loadObject();
-    
-    std::vector< glm::vec3 > vertices = object.outVertices;
-    std::vector< glm::vec2 > uvs = object.outUvs;
-
-    // Create and compile our GLSL program from the shaders
+    //initialize class members
+    Camera camera;
     Shaders shaders;
+    Particles particles;
+    
+    //Compile vertex and fragment shaders  
     shaders.vertex_file_path = "../shaders/vertex.vert";
     shaders.fragment_file_path = "../shaders/fragment.frag";
 
     GLuint programID = shaders.loadShaders();
 
-    glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-    int major, minor;
-    glGetIntegerv(GL_MAJOR_VERSION, &major);
-    glGetIntegerv(GL_MINOR_VERSION, &minor);
-
-    std::cout << "OpenGL version: " << major << "." << minor << std::endl;
-
-    Greetings greetings;
-    greetings.hello(3);
-
-    Camera camera; 
-    Renderer renderer;
-    renderer.createBuffers(vertices, uvs);
+    particles.texturePath = "../textures/star_texture.jpg";
+    particles.initializeParticles(100, true);
 
     // render loop
-    // -----------
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
-        
+
         camera.updateCamera(window);
         mvp = camera.getMvp();
-        
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glEnable(GL_PROGRAM_POINT_SIZE);
         glUseProgram(programID);
+
         glUniformMatrix4fv(matrixID, 1, GL_FALSE, &mvp[0][0]);
 
-    
-        renderer.draw(vertices); // Draw the triangle !
-
+        particles.display();
+        particles.update();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    // glfw: terminate, clearing all previously allocated GLFW resources.
-    // ------------------------------------------------------------------
-    // Cleanup VBO and shader
-    renderer.deleteBuffers();
+    //delete various things
+    particles.destroy();
 	glDeleteProgram(programID);
-	glDeleteVertexArrays(1, &vertexArrayID);
 
-	// Close OpenGL window and terminate GLFW
+    //end program
 	glfwTerminate();
     return 0;
 }
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
+//check if window should close
 void processInput(GLFWwindow *window) {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
 
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-// ---------------------------------------------------------------------------------------------
+//check if window has been resized
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-    // make sure the viewport matches the new window dimensions; note that width and 
-    // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }

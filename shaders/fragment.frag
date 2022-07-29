@@ -1,8 +1,11 @@
-#version 330 core
+#version 450 core
 
-//in vec3 fragmentColor;
-out vec3 color;
+layout (location = 0) out vec4 color;
+
+uniform sampler2D starImage;
 
 void main() {
-  color = vec3(0.5, 0.1, 0.2);
+  //Don't ask me why I have to divide by 3 here, it has something
+  //to do with the texture image I use and I don't know what it is
+  color = texture(starImage, gl_PointCoord / 3.0) * vec4(1.0, 1.0, 1.0, 1.0);
 }

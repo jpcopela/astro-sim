@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 7/19/2022 2:13:46 PM.
+Build started 7/29/2022 6:10:03 PM.
 Project "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -43,7 +43,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.37
+Time Elapsed 00:00:01.54
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -62,7 +62,7 @@ The output was:
 Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 7/19/2022 2:13:48 PM.
+Build started 7/29/2022 6:10:05 PM.
 Project "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -96,7 +96,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.18
+Time Elapsed 00:00:01.21
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -115,7 +115,7 @@ The output was:
 Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 7/19/2022 2:13:49 PM.
+Build started 7/29/2022 6:10:07 PM.
 Project "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CompilerIdCUDA.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -127,7 +127,7 @@ AddCudaCompileDeps:
 Project "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CompilerIdCUDA.vcxproj" (1) is building "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CompilerIdCUDA.vcxproj" (1:2) on node 1 (CudaBuildCore target(s)).
 CudaBuildCore:
   Compiling CUDA source file CMakeCUDACompilerId.cu...
-  cmd.exe /C "C:\Users\copel\AppData\Local\Temp\tmp6f3e7cf16816445483a1785e8ec97e38.cmd"
+  cmd.exe /C "C:\Users\copel\AppData\Local\Temp\tmp2dd29fcfec614c768c17c7296750a628.cmd"
   "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe"  --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include" -I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -v -g   -D_MBCS -Xcompiler "/EHsc /W0 /nologo /Od /FdDebug\vc142.pdb /FS /Zi /RTC1 /MDd " -o Debug\CMakeCUDACompilerId.cu.obj "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CMakeCUDACompilerId.cu"
   
   C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe"  --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include" -I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -v -g   -D_MBCS -Xcompiler "/EHsc /W0 /nologo /Od /FdDebug\vc142.pdb /FS /Zi /RTC1 /MDd " -o Debug\CMakeCUDACompilerId.cu.obj "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CMakeCUDACompilerId.cu" 
@@ -148,20 +148,20 @@ CudaBuildCore:
   #$ CUDAFE_FLAGS=--sdk_dir "C:\Program Files (x86)\Windows Kits\10"
   #$ PTXAS_FLAGS=
   CMakeCUDACompilerId.cu
-  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-8.res" > "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-7_CMakeCUDACompilerId.cpp1.ii" 
+  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-8.res" > "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-7_CMakeCUDACompilerId.cpp1.ii" 
   CMakeCUDACompilerId.cu
-  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-8.res
-  #$ cicc --microsoft_version=1929 --msvc_target_version=1929 --compiler_bindir "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/../../../../../../.." --allow_managed --debug_mode --sdk_dir "C:\Program Files (x86)\Windows Kits\10"  -arch compute_30 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "tmpxft_00002598_00000000-3_CMakeCUDACompilerId.fatbin.c" -g -O0 -tused -nvvmir-library "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-4_CMakeCUDACompilerId.module_id" --orig_src_file_name "C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CompilerIdCUDA/CMakeCUDACompilerId.cu" --gen_c_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.c" --stub_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.gpu"  "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-7_CMakeCUDACompilerId.cpp1.ii" -o "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.ptx"
-  #$ ptxas -arch=sm_30 -m64 -g --dont-merge-basicblocks --return-at-end "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.ptx"  -o "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-9_CMakeCUDACompilerId.sm_30.cubin" 
-  #$ fatbinary -64 --ident="C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CompilerIdCUDA/CMakeCUDACompilerId.cu" --cmdline="-g --dont-merge-basicblocks --return-at-end " --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -g "--image3=kind=elf,sm=30,file=C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-9_CMakeCUDACompilerId.sm_30.cubin" "--image3=kind=ptx,sm=30,file=C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.ptx" --embedded-fatbin="C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-3_CMakeCUDACompilerId.fatbin.c" 
-  #$ erase C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-3_CMakeCUDACompilerId.fatbin
-  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-10.res" > "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-5_CMakeCUDACompilerId.cpp4.ii" 
+  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-8.res
+  #$ cicc --microsoft_version=1929 --msvc_target_version=1929 --compiler_bindir "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/../../../../../../.." --allow_managed --debug_mode --sdk_dir "C:\Program Files (x86)\Windows Kits\10"  -arch compute_30 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "tmpxft_000030fc_00000000-3_CMakeCUDACompilerId.fatbin.c" -g -O0 -tused -nvvmir-library "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-4_CMakeCUDACompilerId.module_id" --orig_src_file_name "C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CompilerIdCUDA/CMakeCUDACompilerId.cu" --gen_c_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.c" --stub_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.gpu"  "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-7_CMakeCUDACompilerId.cpp1.ii" -o "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.ptx"
+  #$ ptxas -arch=sm_30 -m64 -g --dont-merge-basicblocks --return-at-end "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.ptx"  -o "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-9_CMakeCUDACompilerId.sm_30.cubin" 
+  #$ fatbinary -64 --ident="C:/Users/copel/Projects/astro-sim/build/CMakeFiles/3.21.0-rc1/CompilerIdCUDA/CMakeCUDACompilerId.cu" --cmdline="-g --dont-merge-basicblocks --return-at-end " --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -g "--image3=kind=elf,sm=30,file=C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-9_CMakeCUDACompilerId.sm_30.cubin" "--image3=kind=ptx,sm=30,file=C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.ptx" --embedded-fatbin="C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-3_CMakeCUDACompilerId.fatbin.c" 
+  #$ erase C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-3_CMakeCUDACompilerId.fatbin
+  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-10.res" > "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-5_CMakeCUDACompilerId.cpp4.ii" 
   CMakeCUDACompilerId.cu
-  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-10.res
-  #$ cudafe++ --microsoft_version=1929 --msvc_target_version=1929 --compiler_bindir "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/../../../../../../.." --allow_managed --debug_mode --sdk_dir "C:\Program Files (x86)\Windows Kits\10" --m64 --parse_templates --gen_c_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-4_CMakeCUDACompilerId.module_id" "C:/Users/copel/AppData/Local/Temp/tmpxft_00002598_00000000-5_CMakeCUDACompilerId.cpp4.ii" 
-  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-11.res" -Fo"Debug/CMakeCUDACompilerId.cu.obj" 
-  tmpxft_00002598_00000000-6_CMakeCUDACompilerId.cudafe1.cpp
-  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_00002598_00000000-11.res
+  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-10.res
+  #$ cudafe++ --microsoft_version=1929 --msvc_target_version=1929 --compiler_bindir "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/../../../../../../.." --allow_managed --debug_mode --sdk_dir "C:\Program Files (x86)\Windows Kits\10" --m64 --parse_templates --gen_c_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-4_CMakeCUDACompilerId.module_id" "C:/Users/copel/AppData/Local/Temp/tmpxft_000030fc_00000000-5_CMakeCUDACompilerId.cpp4.ii" 
+  #$ cl.exe @"C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-11.res" -Fo"Debug/CMakeCUDACompilerId.cu.obj" 
+  tmpxft_000030fc_00000000-6_CMakeCUDACompilerId.cudafe1.cpp
+  #$ erase C:\Users\copel\AppData\Local\Temp/tmpxft_000030fc_00000000-11.res
 Done Building Project "C:\Users\copel\Projects\astro-sim\build\CMakeFiles\3.21.0-rc1\CompilerIdCUDA\CompilerIdCUDA.vcxproj" (CudaBuildCore target(s)).
 VcpkgTripletSelection:
   Using triplet "x64-windows" from "C:\Users\copel\Projects\vcpkg\installed\x64-windows\"
@@ -188,7 +188,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:03.03
+Time Elapsed 00:00:03.09
 
 
 Compilation of the CUDA compiler identification source "CMakeCUDACompilerId.cu" produced "CompilerIdCUDA.exe"
@@ -209,47 +209,47 @@ Parsed CUDA nvcc include information from above output:
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_32b98.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_75239.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30133 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCCompilerABI.c
-  cl /c /I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_32b98.dir\Debug\\" /Fd"cmTC_32b98.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
-  cmTC_32b98.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_32b98.exe
+  cl /c /I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_75239.dir\Debug\\" /Fd"cmTC_75239.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
+  cmTC_75239.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_75239.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_fde09.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_60f29.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30133 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCXXCompilerABI.cpp
-  cl /c /I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_fde09.dir\Debug\\" /Fd"cmTC_fde09.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_fde09.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_fde09.exe
+  cl /c /I"C:\Users\copel\Projects\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_60f29.dir\Debug\\" /Fd"cmTC_60f29.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_60f29.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_60f29.exe
 
 
 
 Detecting CUDA compiler ABI info compiled with the following output:
 Change Dir: C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_02bb5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_19d25.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Compiling CUDA source file ..\..\..\..\..\..\..\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu...
   
-  C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe" -gencode=arch=compute_30,code=\"sm_30,compute_30\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"     --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -Xcompiler="/EHsc -Zi -Ob0 -v" -g   -D_WINDOWS -D"CMAKE_INTDIR=\"Debug\"" -D_MBCS -D"CMAKE_INTDIR=\"Debug\"" -Xcompiler "/EHsc /W3 /nologo /Od /FdcmTC_02bb5.dir\Debug\vc142.pdb /FS /Zi /RTC1 /MDd /GR" -o cmTC_02bb5.dir\Debug\CMakeCUDACompilerABI.obj "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu" 
-cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]
-cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]
+  C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe" -gencode=arch=compute_30,code=\"sm_30,compute_30\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"     --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -Xcompiler="/EHsc -Zi -Ob0 -v" -g   -D_WINDOWS -D"CMAKE_INTDIR=\"Debug\"" -D_MBCS -D"CMAKE_INTDIR=\"Debug\"" -Xcompiler "/EHsc /W3 /nologo /Od /FdcmTC_19d25.dir\Debug\vc142.pdb /FS /Zi /RTC1 /MDd /GR" -o cmTC_19d25.dir\Debug\CMakeCUDACompilerABI.obj "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu" 
+cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]
+cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]
   CMakeCUDACompilerABI.cu
-cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]
-LINK : warning LNK4044: unrecognized option '/v'; ignored [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]
-     Creating library C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_02bb5.lib and object C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_02bb5.exp
-  cmTC_02bb5.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_02bb5.exe
+cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]
+LINK : warning LNK4044: unrecognized option '/v'; ignored [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]
+     Creating library C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_19d25.lib and object C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_19d25.exp
+  cmTC_19d25.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_19d25.exe
 
 
 
@@ -261,20 +261,20 @@ Parsed CUDA implicit link information from above output:
   link line regex: [^( *|.*[/\])(link\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_02bb5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework]
+  ignore line: [Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_19d25.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework]
   ignore line: [Copyright (C) Microsoft Corporation. All rights reserved.]
   ignore line: []
   ignore line: [  Compiling CUDA source file ..\..\..\..\..\..\..\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu...]
   ignore line: [  ]
-  ignore line: [  C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe" -gencode=arch=compute_30 code=\"sm_30 compute_30\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"     --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -Xcompiler="/EHsc -Zi -Ob0 -v" -g   -D_WINDOWS -D"CMAKE_INTDIR=\"Debug\"" -D_MBCS -D"CMAKE_INTDIR=\"Debug\"" -Xcompiler "/EHsc /W3 /nologo /Od /FdcmTC_02bb5.dir\Debug\vc142.pdb /FS /Zi /RTC1 /MDd /GR" -o cmTC_02bb5.dir\Debug\CMakeCUDACompilerABI.obj "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu" ]
-  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]]
-  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]]
+  ignore line: [  C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin\nvcc.exe" -gencode=arch=compute_30 code=\"sm_30 compute_30\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include"     --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static -Xcompiler="/EHsc -Zi -Ob0 -v" -g   -D_WINDOWS -D"CMAKE_INTDIR=\"Debug\"" -D_MBCS -D"CMAKE_INTDIR=\"Debug\"" -Xcompiler "/EHsc /W3 /nologo /Od /FdcmTC_19d25.dir\Debug\vc142.pdb /FS /Zi /RTC1 /MDd /GR" -o cmTC_19d25.dir\Debug\CMakeCUDACompilerABI.obj "C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCUDACompilerABI.cu" ]
+  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]]
+  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]]
   ignore line: [  CMakeCUDACompilerABI.cu]
-  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]]
+  ignore line: [cl : Command line warning D9002: ignoring unknown option '-v' [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]]
   ignore line: [LINK : warning LNK4044: unrecognized option '/v']
-  ignore line: [ ignored [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_02bb5.vcxproj]]
-  ignore line: [     Creating library C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_02bb5.lib and object C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_02bb5.exp]
-  ignore line: [  cmTC_02bb5.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_02bb5.exe]
+  ignore line: [ ignored [C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\cmTC_19d25.vcxproj]]
+  ignore line: [     Creating library C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_19d25.lib and object C:/Users/copel/Projects/astro-sim/build/CMakeFiles/CMakeTmp/Debug/cmTC_19d25.exp]
+  ignore line: [  cmTC_19d25.vcxproj -> C:\Users\copel\Projects\astro-sim\build\CMakeFiles\CMakeTmp\Debug\cmTC_19d25.exe]
   ignore line: []
   ignore line: []
   implicit libs: []
