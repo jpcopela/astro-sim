@@ -15,10 +15,12 @@ void CHECK_CUDA(cudaError_t err);
 
 void setDevice();
 
-void createBuffers(GLuint& particles_vertex_buffer);
+void launchInitKernel(unsigned int numBodies, float3* positions);
 
-cudaError_t launchKernel(unsigned int numBodies, float3* positions);
+void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velocities);
 
-__global__ void testKernel(float3* positions, double time);
+__global__ void plane(float3* positions);
+
+__global__ void gravityKernel(float3* positions, float3* velocities, float mass, float dt);
 
 #endif

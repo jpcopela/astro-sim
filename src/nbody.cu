@@ -14,6 +14,7 @@
 #include "nbody.cuh"
 
 #define DIM 512
+#define G 6.674e-11
 
 
 void CHECK_CUDA(cudaError_t err) {
@@ -36,26 +37,77 @@ void setDevice() {
     std::cout << "Using device " << dev << std::endl;
 }
 
-cudaError_t launchKernel(unsigned int numBodies, float3* positions)
+void launchInitKernel(unsigned int numBodies, float3* positions)
  {
     int numBlocks = 1;
     dim3 threadsPerBlock(numBodies, numBodies);
 
-    double time = glfwGetTime();
-
     cudaError_t cudaStatus;
-    testKernel<<<numBlocks, threadsPerBlock>>>(positions, time);
+    plane<<<numBlocks, threadsPerBlock>>>(positions);
     cudaStatus = cudaGetLastError();
 
-    return cudaStatus;
+    if (cudaStatus != cudaSuccess) {
+        std::cerr << "Error launching initialization kernel: " << cudaGetErrorString(cudaStatus) << std::endl;
+    }
 }
 
-__global__ void testKernel(float3* positions, double time) {
+void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velocities) {
+    int numBlocks = 1;
+    dim3 threadsPerBlock(numBodies, numBodies);
+
+    cudaError_t cudaStatus;
+
+    size_t size = numBodies * numBodies * 3 * sizeof(float);
+    float mass = 100000.0;
+    float dt = 100.0;
+
+    gravityKernel<<<numBlocks, threadsPerBlock>>>(positions, velocities, mass, dt);
+    cudaStatus = cudaGetLastError();
+
+    if (cudaStatus != cudaSuccess) {
+        std::cerr << "Error launching initialization kernel: " << cudaGetErrorString(cudaStatus) << std::endl;
+    }
+}
+
+__global__ void plane(float3* positions) {
     unsigned int id = threadIdx.x + threadIdx.y * blockDim.x;
  
-    positions[id].x = threadIdx.x;
-    positions[id].y = threadIdx.y;
-    positions[id].z = 0.0;
+    positions[id].x = threadIdx.x * 100.0;
+    positions[id].y = 0.0 ;
+    positions[id].z = (threadIdx.y* 100.0) + 100;
+}
+
+__global__ void gravityKernel(float3* positions, float3* d_velocity, float mass, float dt) {
+    int i = threadIdx.x + threadIdx.y * blockDim.x;
+    const float3 d0_i = positions[i];
+    float3 a = {0, 0, 0};
+
+    for (int j = 0; j < blockDim.x * blockDim.y; j++) {
+        if (j == i) continue;
+
+        const float3 d0_j = positions[j];
+        float3 r_ij;
+        r_ij.x = d0_i.x - d0_j.x;
+        r_ij.y = d0_i.y - d0_j.y;
+        r_ij.z = d0_i.z - d0_j.z;
+
+        float r_squared = (r_ij.x * r_ij.x) + (r_ij.y * r_ij.y) + (r_ij.z * r_ij.z);
+
+        float F_coef = -G * mass / r_squared;
+
+        a.x += F_coef * r_ij.x * rsqrt(r_squared);
+        a.y += F_coef * r_ij.y * rsqrt(r_squared);
+        a.z += F_coef * r_ij.z * rsqrt(r_squared);
+
+        const float3 v0_i = d_velocity[i];
+        d_velocity[i].x = v0_i.x + (a.x * dt);
+        d_velocity[i].y = v0_i.y + (a.y * dt);
+        d_velocity[i].z = v0_i.z + (a.z * dt);
+
+        positions[i].x = d0_i.x + v0_i.x * dt + a.x * dt * dt / 2.0;
+        positions[i].y = d0_i.y + v0_i.y * dt + a.y * dt * dt / 2.0;
+        positions[i].z = d0_i.z + v0_i.z * dt + a.z * dt * dt / 2.0;
+    }   
 }
 
 

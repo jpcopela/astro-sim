@@ -82,7 +82,7 @@ void Camera::updateCamera(GLFWwindow* window) {
     }
 
     // Projection matrix : 45&deg; Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-    projectionMatrix = glm::perspective(glm::radians(fov), (float) width / (float) height, 0.1f, 100.0f);
+    projectionMatrix = glm::perspective(glm::radians(fov), (float) width / (float) height, 100.0f, 100000000.0f);
 
     // Camera matrix
     viewMatrix = glm::lookAt(position, position+direction, up);

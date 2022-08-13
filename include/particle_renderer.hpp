@@ -27,11 +27,9 @@ static const struct Particle {
 class Particles {
     public:
         Particles() {};
-        
-        static const unsigned int numParticles = 5;
         const char * texturePath;
         
-        void initializeParticles(unsigned int numBodies);
+        void initializeParticles();
         void display();
         void update();
         void destroy();
@@ -39,13 +37,17 @@ class Particles {
     private:  
 
         cudaGraphicsResource_t resource;
+        cudaGraphicsResource_t velocity_resource;
+        cudaGraphicsResource_t resources[2];
+
+        float3* buffers[2];
 
         unsigned int numBodies = 16;
 
         GLuint vertexArrayID;
         GLuint particles_vertex_buffer;
+        GLuint velocity_buffer;
         
-
         unsigned int texture;
 
         void createParticleBuffers();

@@ -18,10 +18,18 @@
 
 
 //must set public variable texturePath before calling!
-void Particles::initializeParticles(unsigned int numBodies) {
+void Particles::initializeParticles() {
     if (texturePath != NULL) {
         createParticleBuffers();
         loadTexture();
+
+        size_t size;
+        CHECK_CUDA(cudaGraphicsMapResources(1, &resources[0], 0));
+        CHECK_CUDA(cudaGraphicsResourceGetMappedPointer((void**)&buffers[0], &size, resources[0]));
+
+        launchInitKernel(numBodies, buffers[0]);
+
+        CHECK_CUDA(cudaGraphicsUnmapResources(1, &resources[0], NULL));
     }
     else {
         std::cout << "No texture path provided" << std::endl;
@@ -29,18 +37,16 @@ void Particles::initializeParticles(unsigned int numBodies) {
 }
 
 void Particles::update() {
-    float3* positions;
+    
     size_t size;
     
-    CHECK_CUDA(cudaGraphicsMapResources(1, &resource, 0));
-    CHECK_CUDA(cudaGraphicsResourceGetMappedPointer((void**)&positions, &size, resource));
+    CHECK_CUDA(cudaGraphicsMapResources(2, resources, 0));
+    CHECK_CUDA(cudaGraphicsResourceGetMappedPointer((void**)&buffers[0], &size, resources[0]));
+    CHECK_CUDA(cudaGraphicsResourceGetMappedPointer((void**)&buffers[1], &size, resources[1]));
 
-    cudaError_t cudaStatus = launchKernel(numBodies, positions);
-    if (cudaStatus != cudaSuccess) {
-        std::cerr << "Error launching kernel" << std::endl;
-    }
-    
-    CHECK_CUDA(cudaGraphicsUnmapResources(1, &resource, NULL));
+    launchGravityKernel(numBodies, buffers[0], buffers[1]);
+
+    CHECK_CUDA(cudaGraphicsUnmapResources(2, resources, NULL));
 
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
 }
@@ -48,21 +54,6 @@ void Particles::update() {
 void Particles::createParticleBuffers() {
 	glGenVertexArrays(1, &vertexArrayID);
     glBindVertexArray(vertexArrayID);
-
-    //used for testing purposes
-    /* glGenBuffers(1, &particles_vertex_buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(p_vertex_buffer_data), p_vertex_buffer_data, GL_STREAM_DRAW);
-    
-    glEnableVertexAttribArray(0);
-	glVertexAttribPointer(
-        0,
-        3,
-        GL_FLOAT,
-        GL_FALSE,
-        0,
-        (void*)0
-    ); */
 
     glGenBuffers(1, &particles_vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
@@ -80,7 +71,25 @@ void Particles::createParticleBuffers() {
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     
-    CHECK_CUDA(cudaGraphicsGLRegisterBuffer(&resource, particles_vertex_buffer, cudaGraphicsMapFlagsNone));
+    CHECK_CUDA(cudaGraphicsGLRegisterBuffer(&resources[0], particles_vertex_buffer, cudaGraphicsMapFlagsNone));
+
+    glGenBuffers(1, &velocity_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, velocity_buffer);
+    glBufferData(GL_ARRAY_BUFFER, numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
+
+     glEnableVertexAttribArray(1);
+	glVertexAttribPointer(
+        1,
+        3,
+        GL_FLOAT,
+        GL_FALSE,
+        0,
+        (void*)0
+    ); 
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
+    CHECK_CUDA(cudaGraphicsGLRegisterBuffer(&resources[1], velocity_buffer, cudaGraphicsMapFlagsNone));
 
     glBindVertexArray(0);
 }
@@ -97,6 +106,16 @@ void Particles::display() {
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
 	glVertexAttribPointer(
         0,
+        3,
+        GL_FLOAT,
+        GL_FALSE,
+        0,
+        (void*)0
+    ); 
+
+     glBindBuffer(GL_ARRAY_BUFFER, velocity_buffer);
+	glVertexAttribPointer(
+        1,
         3,
         GL_FLOAT,
         GL_FALSE,

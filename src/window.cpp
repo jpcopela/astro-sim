@@ -67,7 +67,7 @@ int main() {
     
     
     particles.texturePath = "../textures/star_texture.jpg";
-    particles.initializeParticles(100);
+    particles.initializeParticles();
     glEnable(GL_PROGRAM_POINT_SIZE); 
 
     // render loop
