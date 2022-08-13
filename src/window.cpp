@@ -3,14 +3,13 @@
 
 #include <iostream>
 
-#include "nbody.cuh"
-
 #include <camera.hpp>
 #include <shaders.hpp>
 #include <objloader.hpp>
 #include <obj_renderer.hpp>
 #include <particle_renderer.hpp>
 
+#include "nbody.cuh"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -18,13 +17,15 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
 //variables
-const unsigned int width = 800;
-const unsigned int height = 600;
+const unsigned int width = 1920;
+const unsigned int height = 1080;
 
 GLuint matrixID;
 glm::mat4 mvp;
 
 int main() {
+    
+    
     setDevice();
 
     glfwInit();
@@ -49,11 +50,7 @@ int main() {
         return -1;
     }    
 
-    // Enable depth test
-    //glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
-    // Accept fragment if it closer to the camera than the former one
-    //glDepthFunc(GL_LESS);
+    
 
     //initialize class members
     Camera camera;
@@ -67,28 +64,29 @@ int main() {
     GLuint programID = shaders.loadShaders();
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
+    
+    
     particles.texturePath = "../textures/star_texture.jpg";
-    particles.initializeParticles(100, true);
+    particles.initializeParticles(100);
+    glEnable(GL_PROGRAM_POINT_SIZE); 
 
     // render loop
     while (!glfwWindowShouldClose(window))
-    {
+    {   
         processInput(window);
 
         camera.updateCamera(window);
         mvp = camera.getMvp();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        glEnable(GL_PROGRAM_POINT_SIZE);
+        
         glUseProgram(programID);
 
         glUniformMatrix4fv(matrixID, 1, GL_FALSE, &mvp[0][0]);
 
-        particles.display();
         particles.update();
-
+        particles.display();
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -105,7 +103,7 @@ int main() {
 //check if window should close
 void processInput(GLFWwindow *window) {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+        glfwSetWindowShouldClose(window, true);     
 }
 
 //check if window has been resized

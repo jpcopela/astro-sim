@@ -105,7 +105,7 @@ endif()
 
 # This is the list of host compilation flags.  It C or CXX should already have
 # been chosen by FindCUDA.cmake.
-set(CMAKE_HOST_FLAGS /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /Wall )
+set(CMAKE_HOST_FLAGS /DWIN32 /D_WINDOWS /W3 /GR /EHsc  )
 set(CMAKE_HOST_FLAGS_DEBUG /MDd /Zi /Ob0 /Od /RTC1)
 set(CMAKE_HOST_FLAGS_RELEASE /MD /O2 /Ob2 /DNDEBUG)
 set(CMAKE_HOST_FLAGS_MINSIZEREL /MD /O1 /Ob1 /DNDEBUG)

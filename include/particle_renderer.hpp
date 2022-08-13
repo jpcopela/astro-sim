@@ -1,5 +1,11 @@
 #include <glad/glad.h>
+
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <cuda_gl_interop.h>
 #include <glm/glm.hpp>
+
+
 
 static const GLfloat p_vertex_buffer_data[] = {
      0.0f, 0.5f,  0.5f, 
@@ -9,21 +15,14 @@ static const GLfloat p_vertex_buffer_data[] = {
      1.0f, 1.5f, 0.0f
 };
 
-static const unsigned int p_indices[] = {  
-    0, 1, 3,   
-    1, 2, 3    
-};   
-
-static const GLfloat particles_positions[] = {
-    0.6, 0.0, 0.0, 1.2, 0.0, 0.0, 1.8, 0.0, 0.0
-};
-
 static const struct Particle {
     glm::vec4 particleColor;
 
     glm::vec3 pos, velocity;
     float mass;
 };
+
+
 
 class Particles {
     public:
@@ -32,21 +31,20 @@ class Particles {
         static const unsigned int numParticles = 5;
         const char * texturePath;
         
-        void initializeParticles(unsigned int numBodies, bool randomDist);
+        void initializeParticles(unsigned int numBodies);
         void display();
         void update();
         void destroy();
-        
-        
 
-    private:
-        Particle particles[numParticles]; 
-        GLuint particles_vertex_buffer;
-        GLuint particles_position_buffer;
+    private:  
 
-        GLuint particlesEBO;
+        cudaGraphicsResource_t resource;
+
+        unsigned int numBodies = 16;
 
         GLuint vertexArrayID;
+        GLuint particles_vertex_buffer;
+        
 
         unsigned int texture;
 

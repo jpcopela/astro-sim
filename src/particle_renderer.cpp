@@ -9,18 +9,19 @@
 #include "obj_renderer.hpp"
 #include "particle_renderer.hpp"
 
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <cuda_gl_interop.h>
+
+
 #include "nbody.cuh"
 
 
 //must set public variable texturePath before calling!
-void Particles::initializeParticles(unsigned int numBodies, bool randomDist) {
+void Particles::initializeParticles(unsigned int numBodies) {
     if (texturePath != NULL) {
         createParticleBuffers();
         loadTexture();
-
-        if (randomDist) {
-            
-        }
     }
     else {
         std::cout << "No texture path provided" << std::endl;
@@ -28,14 +29,28 @@ void Particles::initializeParticles(unsigned int numBodies, bool randomDist) {
 }
 
 void Particles::update() {
+    float3* positions;
+    size_t size;
+    
+    CHECK_CUDA(cudaGraphicsMapResources(1, &resource, 0));
+    CHECK_CUDA(cudaGraphicsResourceGetMappedPointer((void**)&positions, &size, resource));
 
+    cudaError_t cudaStatus = launchKernel(numBodies, positions);
+    if (cudaStatus != cudaSuccess) {
+        std::cerr << "Error launching kernel" << std::endl;
+    }
+    
+    CHECK_CUDA(cudaGraphicsUnmapResources(1, &resource, NULL));
+
+    glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
 }
 
 void Particles::createParticleBuffers() {
 	glGenVertexArrays(1, &vertexArrayID);
     glBindVertexArray(vertexArrayID);
 
-    glGenBuffers(1, &particles_vertex_buffer);
+    //used for testing purposes
+    /* glGenBuffers(1, &particles_vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(p_vertex_buffer_data), p_vertex_buffer_data, GL_STREAM_DRAW);
     
@@ -47,9 +62,27 @@ void Particles::createParticleBuffers() {
         GL_FALSE,
         0,
         (void*)0
+    ); */
+
+    glGenBuffers(1, &particles_vertex_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
+    glBufferData(GL_ARRAY_BUFFER, numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+	glVertexAttribPointer(
+        0,
+        3,
+        GL_FLOAT,
+        GL_FALSE,
+        0,
+        (void*)0
     );
 
-	
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
+    CHECK_CUDA(cudaGraphicsGLRegisterBuffer(&resource, particles_vertex_buffer, cudaGraphicsMapFlagsNone));
+
+    glBindVertexArray(0);
 }
 
 void Particles::destroy() {
@@ -59,6 +92,8 @@ void Particles::destroy() {
 }
 
 void Particles::display() {
+    glBindVertexArray(vertexArrayID);
+
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
 	glVertexAttribPointer(
         0,
@@ -68,12 +103,8 @@ void Particles::display() {
         0,
         (void*)0
     ); 
-
-	glBindVertexArray(vertexArrayID);
-
-    glDrawArrays(GL_POINTS, 0, 5);
-
-	glBindVertexArray(0);
+    
+    glDrawArrays(GL_POINTS, 0, numBodies * numBodies);
 }
 
 //loads the texture used to display particles

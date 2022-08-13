@@ -40,7 +40,7 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL Intel)
   # using Intel Compiler
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
-    set(COMPILE_FLAGS "${COMPILE_FLAGS} /Wall")
+    set(COMPILE_FLAGS "${COMPILE_FLAGS}")
     set(LINKER_FLAGS  "${LINKER_FLAGS}")
 endif()
 
@@ -51,7 +51,7 @@ set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${LINKER_FLAGS}")
 set(cuda_additional_flags "--std=c++11")
 
 # findCUDA Options
-set(CUDA_VERBOSE_BUILD ON)
+set(CUDA_VERBOSE_BUILD OFF)
 set(CUDA_SEPARABLE_COMPILATION ON) # Allow multiple CUDA files compilation
 
 # Generating the commands to compile .cu into .ptx
