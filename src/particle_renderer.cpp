@@ -57,7 +57,7 @@ void Particles::createParticleBuffers() {
 
     glGenBuffers(1, &particles_vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, particles_vertex_buffer);
-    glBufferData(GL_ARRAY_BUFFER, numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 12 * numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
 
     glEnableVertexAttribArray(0);
 	glVertexAttribPointer(
@@ -75,7 +75,7 @@ void Particles::createParticleBuffers() {
 
     glGenBuffers(1, &velocity_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, velocity_buffer);
-    glBufferData(GL_ARRAY_BUFFER, numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 12 * numBodies * numBodies * 3 * sizeof(float), 0, GL_DYNAMIC_DRAW);
 
      glEnableVertexAttribArray(1);
 	glVertexAttribPointer(
@@ -123,7 +123,7 @@ void Particles::display() {
         (void*)0
     ); 
     
-    glDrawArrays(GL_POINTS, 0, numBodies * numBodies);
+    glDrawArrays(GL_POINTS, 0, numBodies * numBodies * 12);
 }
 
 //loads the texture used to display particles

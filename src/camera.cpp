@@ -60,10 +60,6 @@ void Camera::updateCamera(GLFWwindow* window) {
 
     up = glm::cross( right, direction );
 
-    //sprinting
-    if (glfwGetKey( window, GLFW_KEY_LEFT_SHIFT ) == GLFW_PRESS){
-        speed = boost_speed;
-    }
     // Move forward
     if (glfwGetKey(window, GLFW_KEY_W ) == GLFW_PRESS){
         position += direction * deltaTime * speed;
@@ -80,9 +76,15 @@ void Camera::updateCamera(GLFWwindow* window) {
     if (glfwGetKey( window, GLFW_KEY_A ) == GLFW_PRESS){
         position -= right * deltaTime * speed;
     }
+    if (glfwGetKey( window, GLFW_KEY_E ) == GLFW_PRESS){
+        position += up * deltaTime * speed;
+    }
+    if (glfwGetKey( window, GLFW_KEY_LEFT_SHIFT ) == GLFW_PRESS){
+        position -= up * deltaTime * speed;
+    }
 
     // Projection matrix : 45&deg; Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-    projectionMatrix = glm::perspective(glm::radians(fov), (float) width / (float) height, 100.0f, 100000000.0f);
+    projectionMatrix = glm::perspective(glm::radians(fov), (float) width / (float) height, 100.0f, 10000.0f);
 
     // Camera matrix
     viewMatrix = glm::lookAt(position, position+direction, up);

@@ -9,7 +9,7 @@ struct cameraProperties {
 class Camera {
     public:
         
-        float speed = 10.0f;
+        float speed = 1.0f;
         float mouseSpeed = 3.0f;
         float boost_speed = 0.07f;
 

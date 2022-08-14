@@ -42,7 +42,7 @@ class Particles {
 
         float3* buffers[2];
 
-        unsigned int numBodies = 16;
+        unsigned int numBodies = 32;
 
         GLuint vertexArrayID;
         GLuint particles_vertex_buffer;

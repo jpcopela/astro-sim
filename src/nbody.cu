@@ -37,9 +37,8 @@ void setDevice() {
     std::cout << "Using device " << dev << std::endl;
 }
 
-void launchInitKernel(unsigned int numBodies, float3* positions)
- {
-    int numBlocks = 1;
+void launchInitKernel(unsigned int numBodies, float3* positions) {
+    dim3 numBlocks(12);
     dim3 threadsPerBlock(numBodies, numBodies);
 
     cudaError_t cudaStatus;
@@ -52,14 +51,13 @@ void launchInitKernel(unsigned int numBodies, float3* positions)
 }
 
 void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velocities) {
-    int numBlocks = 1;
+    dim3 numBlocks(12);
     dim3 threadsPerBlock(numBodies, numBodies);
 
     cudaError_t cudaStatus;
 
-    size_t size = numBodies * numBodies * 3 * sizeof(float);
-    float mass = 100000.0;
-    float dt = 100.0;
+    float mass = 100000.0; //kg
+    float dt = 5.0; //seconds
 
     gravityKernel<<<numBlocks, threadsPerBlock>>>(positions, velocities, mass, dt);
     cudaStatus = cudaGetLastError();
@@ -70,19 +68,26 @@ void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velo
 }
 
 __global__ void plane(float3* positions) {
-    unsigned int id = threadIdx.x + threadIdx.y * blockDim.x;
+    //unsigned int id = threadIdx.x + threadIdx.y * blockDim.x;
+    int tid = threadIdx.x;
+    int col_offset = blockDim.x * blockDim.y * blockIdx.x;
+    int row_offset = gridDim.x * blockIdx.y * blockDim.x * blockDim.y + blockDim.x * threadIdx.y;
+    int id = tid + col_offset + row_offset;
  
-    positions[id].x = threadIdx.x * 100.0;
-    positions[id].y = 0.0 ;
-    positions[id].z = (threadIdx.y* 100.0) + 100;
+    positions[id].x = (threadIdx.x) * 50.0;
+    positions[id].y = (blockIdx.x * 50.0) - 1000.0 ;
+    positions[id].z = (threadIdx.y) * 50.0;
 }
 
 __global__ void gravityKernel(float3* positions, float3* d_velocity, float mass, float dt) {
-    int i = threadIdx.x + threadIdx.y * blockDim.x;
+    int tid = threadIdx.x;
+    int col_offset = blockDim.x * blockDim.y * blockIdx.x;
+    int row_offset = gridDim.x * blockIdx.y * blockDim.x * blockDim.y + blockDim.x * threadIdx.y;
+    int i = tid + col_offset + row_offset;
     const float3 d0_i = positions[i];
     float3 a = {0, 0, 0};
 
-    for (int j = 0; j < blockDim.x * blockDim.y; j++) {
+    for (int j = 0; j < blockDim.x * blockDim.y * gridDim.x; j++) {
         if (j == i) continue;
 
         const float3 d0_j = positions[j];
@@ -104,9 +109,9 @@ __global__ void gravityKernel(float3* positions, float3* d_velocity, float mass,
         d_velocity[i].y = v0_i.y + (a.y * dt);
         d_velocity[i].z = v0_i.z + (a.z * dt);
 
-        positions[i].x = d0_i.x + v0_i.x * dt + a.x * dt * dt / 2.0;
-        positions[i].y = d0_i.y + v0_i.y * dt + a.y * dt * dt / 2.0;
-        positions[i].z = d0_i.z + v0_i.z * dt + a.z * dt * dt / 2.0;
+        positions[i].x = (d0_i.x + v0_i.x * dt + a.x * dt * dt / 2.0);
+        positions[i].y = (d0_i.y + v0_i.y * dt + a.y * dt * dt / 2.0);
+        positions[i].z = (d0_i.z + v0_i.z * dt + a.z * dt * dt / 2.0);
     }   
 }
 
