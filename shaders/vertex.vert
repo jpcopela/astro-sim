@@ -1,12 +1,16 @@
 #version 330 core
 layout(location = 0) in vec3 vertexPositionMS;
-layout(location = 1) in vec3 offset;
+layout(location = 1) in vec3 velocity;
 
 uniform mat4 MVP;
+out float color;
 
 
 
 void main() {
+    //magnitude of the velocity
+    color = sqrt(velocity.x * velocity.x + velocity.y * velocity.y + velocity.z * velocity.z);
+    color = 1 / (150.0 * color);
     gl_PointSize = 10.0;
-    gl_Position = MVP * vec4(offset + vertexPositionMS, 1);
+    gl_Position = MVP * vec4(vertexPositionMS, 1);
 }

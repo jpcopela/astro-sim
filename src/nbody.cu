@@ -37,12 +37,13 @@ void setDevice() {
     std::cout << "Using device " << dev << std::endl;
 }
 
-void launchInitKernel(unsigned int numBodies, float3* positions) {
-    dim3 numBlocks(12);
-    dim3 threadsPerBlock(numBodies, numBodies);
-
+void launchInitKernel(unsigned int numBlocks, unsigned int threadsPerBlock, float3* positions) {
     cudaError_t cudaStatus;
-    plane<<<numBlocks, threadsPerBlock>>>(positions);
+
+    unsigned int sqrtThreads = (unsigned int)sqrt(threadsPerBlock);
+    dim3 threads(sqrtThreads, sqrtThreads);
+
+    plane<<<numBlocks, threads>>>(positions);
     cudaStatus = cudaGetLastError();
 
     if (cudaStatus != cudaSuccess) {
@@ -50,16 +51,15 @@ void launchInitKernel(unsigned int numBodies, float3* positions) {
     }
 }
 
-void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velocities) {
-    dim3 numBlocks(12);
-    dim3 threadsPerBlock(numBodies, numBodies);
-
+void launchGravityKernel(unsigned int numBlocks, unsigned int threadsPerBlock, float3* positions, float3* velocities) {
     cudaError_t cudaStatus;
+    unsigned int sqrtThreads = (unsigned int)sqrt(threadsPerBlock);
+    dim3 threads(sqrtThreads, sqrtThreads);
 
     float mass = 100000.0; //kg
-    float dt = 5.0; //seconds
+    float dt = 100.0; //seconds
 
-    gravityKernel<<<numBlocks, threadsPerBlock>>>(positions, velocities, mass, dt);
+    gravityKernel<<<numBlocks, threads>>>(positions, velocities, mass, dt);
     cudaStatus = cudaGetLastError();
 
     if (cudaStatus != cudaSuccess) {
@@ -104,6 +104,8 @@ __global__ void gravityKernel(float3* positions, float3* d_velocity, float mass,
         a.y += F_coef * r_ij.y * rsqrt(r_squared);
         a.z += F_coef * r_ij.z * rsqrt(r_squared);
 
+       
+    }   
         const float3 v0_i = d_velocity[i];
         d_velocity[i].x = v0_i.x + (a.x * dt);
         d_velocity[i].y = v0_i.y + (a.y * dt);
@@ -112,7 +114,6 @@ __global__ void gravityKernel(float3* positions, float3* d_velocity, float mass,
         positions[i].x = (d0_i.x + v0_i.x * dt + a.x * dt * dt / 2.0);
         positions[i].y = (d0_i.y + v0_i.y * dt + a.y * dt * dt / 2.0);
         positions[i].z = (d0_i.z + v0_i.z * dt + a.z * dt * dt / 2.0);
-    }   
 }
 
 

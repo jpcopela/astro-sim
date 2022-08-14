@@ -29,7 +29,7 @@ class Particles {
         Particles() {};
         const char * texturePath;
         
-        void initializeParticles();
+        void initializeParticles(unsigned int numBodies);
         void display();
         void update();
         void destroy();
@@ -42,7 +42,8 @@ class Particles {
 
         float3* buffers[2];
 
-        unsigned int numBodies = 32;
+        unsigned int numBlocks;
+        unsigned int threadsPerBlock;
 
         GLuint vertexArrayID;
         GLuint particles_vertex_buffer;
@@ -50,6 +51,7 @@ class Particles {
         
         unsigned int texture;
 
+        void calculateKernelParams(unsigned int numBodies);
         void createParticleBuffers();
         
         void loadTexture();

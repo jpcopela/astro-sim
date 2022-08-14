@@ -23,8 +23,8 @@ const unsigned int height = 1080;
 GLuint matrixID;
 glm::mat4 mvp;
 
-int main() {
-    
+int main(int argc, char** argv) 
+{
     
     setDevice();
 
@@ -50,7 +50,18 @@ int main() {
         return -1;
     }    
 
-    
+    char* p;
+    int numBodies;
+    //this is horrible but i'm tired of recompiling
+    for (int i = 1; i < argc; i++) {
+        if (std::strcmp(argv[i], "-c") == 0) {
+            numBodies = int(strtol(argv[i + 1], &p, 10));
+            if (numBodies < 0) {
+                std::cerr << "Cannot use negative particle counts" << std::endl;
+                numBodies = 1024;
+            }
+        }
+    }
 
     //initialize class members
     Camera camera;
@@ -67,7 +78,7 @@ int main() {
     
     
     particles.texturePath = "../textures/star_texture.jpg";
-    particles.initializeParticles();
+    particles.initializeParticles(numBodies);
     glEnable(GL_PROGRAM_POINT_SIZE); 
 
     // render loop

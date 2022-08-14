@@ -15,9 +15,9 @@ void CHECK_CUDA(cudaError_t err);
 
 void setDevice();
 
-void launchInitKernel(unsigned int numBodies, float3* positions);
+void launchInitKernel(unsigned int numBlocks, unsigned int threadsPerBlock, float3* positions);
 
-void launchGravityKernel(unsigned int numBodies, float3* positions, float3* velocities);
+void launchGravityKernel(unsigned int numBlocks, unsigned int threadsPerBlock, float3* positions, float3* velocities);
 
 __global__ void plane(float3* positions);
 
